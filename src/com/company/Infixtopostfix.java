@@ -8,15 +8,12 @@ class Infixtopostfix {
         char [] charArray = infix.toCharArray();
         operatorStack = new Stack<>();
         postfix=" ";
-        for(int i=0;i<charArray.length;i++){
-            if(isOperator(charArray[i])){
-                if (charArray[i]=='(' && i+1<charArray.length){
-                    if (charArray[i+1]=='-'){
-                        i=negativeDigit(i+ 1, charArray);
-                    }
-                }
-                    else
-                processOperator(charArray[i]);
+        for(int i=0;i<charArray.length;i++) {
+            if (isOperator(charArray[i])) {
+                if (charArray[i] == '(' && i + 1 < charArray.length && charArray[i + 1] == '-') {
+                    i = negativeDigit(i + 1, charArray);
+                } else
+                    processOperator(charArray[i]);
             }
             else{
                 if(isOperand(charArray[i])){
