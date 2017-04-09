@@ -8,11 +8,9 @@ class Compute {
         char[] charArray = chain.toCharArray();
         digitStack = new Stack<>();
         for (int i = 0; i < charArray.length - 1; i++) {
-            if (charArray[i] == ' ') {
-            } else {
+            if (charArray[i] != ' ') {
                 if (Infixtopostfix.isOperator(charArray[i])) {
-                    if (Infixtopostfix.isOperand(charArray[i + 1])) {
-
+                    if (charArray[i + 1]=='-') {
                         i = addDigit(i , charArray);
                     } else {
                         processOperator(charArray[i]);

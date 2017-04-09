@@ -10,6 +10,12 @@ class Infixtopostfix {
         postfix=" ";
         for(int i=0;i<charArray.length;i++){
             if(isOperator(charArray[i])){
+                if (charArray[i]=='(' && i+1<charArray.length){
+                    if (charArray[i+1]=='-'){
+                        i=negativeDigit(i+ 1, charArray);
+                    }
+                }
+                    else
                 processOperator(charArray[i]);
             }
             else{
@@ -61,6 +67,15 @@ class Infixtopostfix {
             case '*':case '/':case '%': return 2;
             default: return 0;
         }
+    }
+
+    private int negativeDigit(int posiiton, char[] array){
+        while(posiiton<array.length && array[posiiton]!=')'){
+            postfix+=array[posiiton];
+            posiiton++;
+        }
+        postfix+=" ";
+        return posiiton;
     }
 
     public static boolean isOperator(char op){
