@@ -39,6 +39,7 @@ class Compute {
 
             case '/': {
                 int right = digitStack.pop();
+                if (right==0) throw new ArithmeticException();
                 digitStack.push(digitStack.pop() / right);
                 break;
             }

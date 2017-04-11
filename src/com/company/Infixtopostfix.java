@@ -77,7 +77,7 @@ class Infixtopostfix {
 
     public static boolean isOperator(char op){
         return (op == '+' || op == '-' || op =='*'
-                || op == '/' || op == '(' || op == ')');
+                || op == '/' || op=='%' || op == '(' || op == ')');
     }
 
     public static boolean isOperand(char op){
