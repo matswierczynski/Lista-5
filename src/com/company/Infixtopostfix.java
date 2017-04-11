@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.EmptyStackException;
+
 class Infixtopostfix {
     private Stack<Character> operatorStack;
     private String postfix;
@@ -82,6 +84,31 @@ class Infixtopostfix {
 
     public static boolean isOperand(char op){
         return Character.isDigit(op);
+    }
+
+    public static boolean isPalindrome(String napis){
+         Stack<Character> normalStack = new Stack<>();
+         Stack<Character> reverseStack = new Stack<>();
+        char [] Array = napis.toCharArray();
+        for(int i=0;i<Array.length;i++){
+            if(Array[i]!=' ')
+                normalStack.push(Array[i]);
+        }
+
+        for(int i=Array.length-1;i>=0;i--){
+            if(Array[i]!=' '){
+                reverseStack.push(Array[i]);
+            }
+        }
+try {
+    while (normalStack.peek() == reverseStack.peek()) {
+        normalStack.pop();
+        reverseStack.pop();
+    }
+}
+
+        catch(EmptyStackException e) { return true;}
+        return false;
     }
 
 
